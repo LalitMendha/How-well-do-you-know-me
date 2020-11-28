@@ -1,4 +1,4 @@
-
+//Assignment 1
 console.log("How well do you know me quiz !!")
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 var readlineSync = require('readline-sync');
