@@ -46,6 +46,15 @@ var questionArray = [{
   options: ["Scam 1992" ,"Breaking bad", "FRIENDS", "The Walking Dead"]
 }
 ]
+var scoreArray = [{
+  name: "Dhiraj",
+  score: "6"
+},
+{
+  name: "Sahil",
+  score:"5"
+},
+]
 var question, answer, score, index;
 score = 0;
 for(var i=0; i< questionArray.length; i++){
@@ -60,7 +69,14 @@ for(var i=0; i< questionArray.length; i++){
 }
 console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
 console.log("Your Total score is: ", score);
+var lowFlag = checkHighscore(score);
+ if(lowFlag === ""){
+  console.log("Congratulations !! You have scored the highest points. Please send me the screenshot of points so i can update it in my system") 
+ } 
+updateScore(userName, score);
+ display(); 
 console.log("~~~~~~ Thank You " +userName+ "!! ~~~~~~~~");
+
 
 function checkAnswer(inputAnswer, index, score) {
   var correctAnswer = questionArray[index].answer;
@@ -77,4 +93,31 @@ function checkAnswer(inputAnswer, index, score) {
     console.log("~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~");
     return score;
   }
+}
+
+function updateScore(userName, score){
+  var result = {
+    name: userName,
+    score: score
+  }
+  scoreArray.push(result);
+}
+
+function display(){
+  for(var i=0; i<scoreArray.length; i++) {
+    console.log(scoreArray[i].name, "-", scoreArray[i].score);
+  }
+}
+
+function checkHighscore(score){
+  var lowFlag = "";
+  for(var i=0; i<scoreArray.length; i++){
+    if(scoreArray[i].score < score){
+      
+    }else{
+      lowFlag = "X";
+      break;
+    }
+  }
+  return lowFlag;
 }
